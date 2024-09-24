@@ -1,3 +1,4 @@
+import FinProLogo from "@/components/finpro-logo";
 import Image from "next/image";
 
 export default function Home() {
@@ -12,6 +13,7 @@ export default function Home() {
           height={38}
           priority
         />
+        <FinProLogo className="dark:invert"/>
         <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
           <li className="mb-2">
             Get started by editing{" "}
@@ -97,5 +99,5 @@ export default function Home() {
         </a>
       </footer>
     </div>
-  );
+  )
 }

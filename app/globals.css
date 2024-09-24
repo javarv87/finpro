@@ -12,6 +12,36 @@ body {
   }
 }
 
+@layer components {
+  .theme-switcher {
+    @apply flex h-8 w-fit p-0 border-0 m-0 rounded-full;
+    box-shadow: var(--shadow-border);
+  }
+  
+  .theme-switcher input {
+    @apply appearance-none p-0 m-0 outline-none absolute;
+  }
+
+  .theme-switcher input:checked~label {
+    @apply text-zinc-800 dark:text-zinc-200 bg-zinc-100 dark:bg-zinc-900;
+    box-shadow: var(--shadow-border);
+  }
+
+  .theme-switcher input:focus-visible+label {
+    @apply ring-2;
+  }
+
+  .theme-switcher label {
+    @apply rounded-full flex items-center justify-center bg-none h-8 w-8 cursor-pointer relative text-muted-foreground;
+  }
+
+  @media (hover: hover) {
+    .theme-switcher label:hover {
+      @apply text-zinc-800 dark:text-zinc-200 !important;
+    }
+  }
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -39,6 +69,7 @@ body {
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
     --radius: 0.5rem;
+    --shadow-border: 0 0 0 1px theme('textColor.zinc.200');
   }
   .dark {
     --background: 240 10% 3.9%;
@@ -65,6 +96,7 @@ body {
     --chart-3: 30 80% 55%;
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
+    --shadow-border: 0 0 0 1px theme('textColor.zinc.800');
   }
 }
 
