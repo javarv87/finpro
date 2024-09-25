@@ -9,6 +9,11 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        geist: "var(--font-geist-sans)",
+        geistMono: "var(--font-geist-mono)",
+        exo: "var(--font-exo)",
+      },
       colors: {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
@@ -58,6 +63,15 @@ const config: Config = {
       },
       gridTemplateColumns: {
         footer: "repeat(3, 1fr) 150px",
+      },
+      animation: {
+        rainbow: "rainbow var(--speed, 2s) infinite linear",
+      },
+      keyframes: {
+        rainbow: {
+          "0%": { "background-position": "0%" },
+          "100%": { "background-position": "200%" },
+        },
       },
     },
   },

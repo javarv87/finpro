@@ -3,14 +3,90 @@ import FinProLogo from "@/components/finpro-logo"
 
 export default function Footer() {
   return (
-    <footer className="px-8 pb-8 m-auto">
+    <footer className="px-8 pb-8 m-auto overflow-hidden">
       <nav
         className="container m-auto flex flex-nowrap justify-between flex-col"
         aria-label="Directorio FinPro"
       >
+        <div className="flex justify-between group/row relative isolate pt-[calc(theme(spacing.2)+1px)] last:pb-[calc(theme(spacing.2)+1px)]">
+          <div
+            aria-hidden="true"
+            className="absolute inset-y-0 left-1/2 -z-10 w-screen -translate-x-1/2"
+          >
+            <div className="absolute inset-x-0 top-0 border-t border-black/5 dark:border-white/5"></div>
+            <div className="absolute inset-x-0 top-2 border-t border-black/5 dark:border-white/5"></div>
+            <div className="absolute inset-x-0 bottom-0 hidden border-b border-black/5 dark:border-white/5 group-last/row:block"></div>
+            <div className="absolute inset-x-0 bottom-2 hidden border-b border-black/5 dark:border-white/5 group-last/row:block"></div>
+          </div>
+          <div>
+            <div className="py-3 group/item relative">
+              <svg
+                viewBox="0 0 15 15"
+                aria-hidden="true"
+                className="hidden group-first/item:block absolute size-[15px] fill-black/10 dark:fill-white/10 -top-2 -left-2"
+              >
+                <path d="M8 0H7V7H0V8H7V15H8V8H15V7H8V0Z"></path>
+              </svg>
+              <svg
+                viewBox="0 0 15 15"
+                aria-hidden="true"
+                className="absolute size-[15px] fill-black/10 dark:fill-white/10 -top-2 -right-2"
+              >
+                <path d="M8 0H7V7H0V8H7V15H8V8H15V7H8V0Z"></path>
+              </svg>
+              <svg
+                viewBox="0 0 15 15"
+                aria-hidden="true"
+                className="hidden group-last/row:group-first/item:block absolute size-[15px] fill-black/10 dark:fill-white/10 -bottom-2 -left-2"
+              >
+                <path d="M8 0H7V7H0V8H7V15H8V8H15V7H8V0Z"></path>
+              </svg>
+              <svg
+                viewBox="0 0 15 15"
+                aria-hidden="true"
+                className="hidden group-last/row:block absolute size-[15px] fill-black/10 dark:fill-white/10 -bottom-2 -right-2"
+              >
+                <path d="M8 0H7V7H0V8H7V15H8V8H15V7H8V0Z"></path>
+              </svg>
+            </div>
+          </div>
+          <div className="flex">
+            <div className="flex items-center gap-8 py-3 group/item relative">
+              <svg
+                viewBox="0 0 15 15"
+                aria-hidden="true"
+                className="hidden group-first/item:block absolute size-[15px] fill-black/10 dark:fill-white/10 -top-2 -left-2"
+              >
+                <path d="M8 0H7V7H0V8H7V15H8V8H15V7H8V0Z"></path>
+              </svg>
+              <svg
+                viewBox="0 0 15 15"
+                aria-hidden="true"
+                className="absolute size-[15px] fill-black/10 dark:fill-white/10 -top-2 -right-2"
+              >
+                <path d="M8 0H7V7H0V8H7V15H8V8H15V7H8V0Z"></path>
+              </svg>
+              <svg
+                viewBox="0 0 15 15"
+                aria-hidden="true"
+                className="hidden group-last/row:group-first/item:block absolute size-[15px] fill-black/10 dark:fill-white/10 -bottom-2 -left-2"
+              >
+                <path d="M8 0H7V7H0V8H7V15H8V8H15V7H8V0Z"></path>
+              </svg>
+              <svg
+                viewBox="0 0 15 15"
+                aria-hidden="true"
+                className="hidden group-last/row:block absolute size-[15px] fill-black/10 dark:fill-white/10 -bottom-2 -right-2"
+              >
+                <path d="M8 0H7V7H0V8H7V15H8V8H15V7H8V0Z"></path>
+              </svg>
+            </div>
+          </div>
+        </div>
+
         <div className="grid grid-cols-2 md:grid-cols-footer gap-8 md:gap-0 w-full">
           <div className="text-sm">
-            <h2 className="font-bold my-2">Compañía</h2>
+            <h2 className="font-bold my-2">Nosotros</h2>
             <ul className="text-muted-foreground">
               <li className="py-2">
                 <a className="hover:underline" href="/">
@@ -35,7 +111,7 @@ export default function Footer() {
             </ul>
           </div>
           <div className="text-sm">
-            <h2 className="font-bold my-2">Social</h2>
+            <h2 className="font-bold my-2">Conecta</h2>
             <ul className="text-muted-foreground">
               <li className="py-2">
                 <a

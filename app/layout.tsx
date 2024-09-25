@@ -1,21 +1,7 @@
 import type { Metadata } from "next"
-import localFont from "next/font/local"
 import "./globals.css"
 import { ThemeProvider } from "next-themes"
-
-import Header from "@/components/header"
-import Footer from "@/components/footer"
-
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-})
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
-})
+import { geistMono, geistSans, exo } from "./fonts"
 
 const defaultUrl = process.env.VERCEL_URL
   ? `https://${process.env.VERCEL_URL}`
@@ -23,8 +9,8 @@ const defaultUrl = process.env.VERCEL_URL
 
 export const metadata: Metadata = {
   metadataBase: new URL(defaultUrl),
-  title: "FinPro",
-  description: "La mejor manera de utilizar tu banca.",
+  title: "FinPro | Transforma tus Finanzas",
+  description: `Descubre productos financieros personalizados en FinPro. Préstamos personales, tarjetas de crédito y cuentas de ahorro con tasas competitivas. ¡Empieza hoy!`,
 }
 
 export default function RootLayout({
@@ -35,7 +21,7 @@ export default function RootLayout({
   return (
     <html
       lang="es"
-      className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} ${exo.variable} antialiased`}
       suppressHydrationWarning
     >
       <body>
@@ -45,15 +31,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <Header />
-          <main className="min-h-screen flex flex-col">
-            <div className="flex-1 w-full flex flex-col gap-20 items-center">
-              <div className="flex flex-col gap-20 max-w-5xl p-5">
-                {children}
-              </div>
-            </div>
-          </main>
-          <Footer />
+          {children}
         </ThemeProvider>
       </body>
     </html>
