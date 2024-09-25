@@ -1,5 +1,7 @@
 import ThemeSwitcher from "@/components/theme-switcher"
 import FinProLogo from "@/components/finpro-logo"
+import Link from "next/link"
+import { menuItems } from "@/lib/constants"
 
 export default function Footer() {
   return (
@@ -84,30 +86,21 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-footer gap-8 md:gap-0 w-full">
+        <div className="grid grid-cols-2 lg:grid-cols-footer gap-8 md:gap-0 w-full">
           <div className="text-sm">
             <h2 className="font-bold my-2">Nosotros</h2>
             <ul className="text-muted-foreground">
-              <li className="py-2">
-                <a className="hover:underline" href="/">
-                  Inicio
-                </a>
-              </li>
-              <li className="py-2">
-                <a className="hover:underline" href="/">
-                  Servicios
-                </a>
-              </li>
-              <li className="py-2">
-                <a className="hover:underline" href="/">
-                  Testimonios
-                </a>
-              </li>
-              <li className="py-2">
-                <a className="hover:underline" href="/">
-                  Contacto
-                </a>
-              </li>
+              {menuItems.map((item) => (
+                <li className="py-2" key={item.id}>
+                  <Link
+                    href={item.href}
+                    className="text-sm font-medium hover:underline underline-offset-4"
+                    key={item.id}
+                  >
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
           <div className="text-sm">
@@ -149,18 +142,41 @@ export default function Footer() {
             <h2 className="font-bold my-2">Legal</h2>
             <ul className="text-muted-foreground">
               <li className="py-2">
-                <a className="hover:underline" href="/">
+                <a className="hover:underline" href="#">
                   Política de Privacidad
                 </a>
               </li>
               <li className="py-2">
-                <a className="hover:underline" href="/">
+                <a className="hover:underline" href="#">
                   Términos de Servicio
                 </a>
               </li>
               <li className="py-2">
-                <a className="hover:underline" href="/">
+                <a className="hover:underline" href="#">
                   Política de Cookies
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div className="text-sm">
+            <h2 className="font-bold my-2">Oficinas</h2>
+            <ul className="text-muted-foreground">
+              <li className="py-2">
+                <address className="not-italic">
+                  <strong className="text-foreground">México</strong>
+                  <br />
+                  Manuel Ma. Contreras No. 197, México 2da Secc, 57620,
+                  Nezahualcóyotl, CDMX
+                </address>
+                <br />
+                <a className="block hover:underline mb-2" href="tel:+52 55 57 93 62 52">
+                  +52 555 793 6252
+                </a>
+                <a
+                  className="block hover:underline"
+                  href="mailto:java.rv87@gmail.com"
+                >
+                  info@finpro.com
                 </a>
               </li>
             </ul>
@@ -170,7 +186,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <FinProLogo className="mt-16 h-16 md:h-32 w-auto m-auto text-neutral-100 dark:text-neutral-900" />
+        <FinProLogo className="mt-16 h-16 md:h-32 w-auto m-auto text-black/5 dark:text-white/5" />
 
         <div className="flex justify-between group/row relative isolate pt-[calc(theme(spacing.2)+1px)] last:pb-[calc(theme(spacing.2)+1px)]">
           <div

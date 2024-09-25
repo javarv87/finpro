@@ -1,17 +1,16 @@
-import Customers from "@/components/customers";
-import Footer from "@/components/footer";
-import Header from "@/components/header";
 import Hero from "@/components/hero";
+import Partners from "@/components/partners";
 
 export default function Home() {
   return (
     <>
-      <Header />
-      <main className="min-h-screen flex flex-col">
-        <Hero />
-        <Customers />
-      </main>
-      <Footer />
+      <Hero />
+      <div
+        className="h-px border-none bg-gradient-to-r from-neutral-400/0
+            via-neutral-400/30 to-neutral-400/0 dark:from-neutral-200/0
+            dark:via-neutral-200/30 dark:to-neutral-200/0"
+      ></div>
+      <Partners />
     </>
   )
 }

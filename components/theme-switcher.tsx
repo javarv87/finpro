@@ -3,7 +3,7 @@
 import { Laptop, Moon, Sun } from "lucide-react"
 import { useTheme } from "next-themes"
 import { memo, useEffect, useState } from "react"
-import { Label } from "./ui/label"
+import { Label } from "@/components/ui/label"
 
 interface ThemeOption {
   value: string

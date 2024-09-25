@@ -1,11 +1,10 @@
 import type { Metadata } from "next"
-import "./globals.css"
-import { ThemeProvider } from "next-themes"
+import "@/styles/globals.css"
+import { ThemeProvider } from "@/components/theme-provider"
 import { geistMono, geistSans, exo } from "./fonts"
-
-const defaultUrl = process.env.VERCEL_URL
-  ? `https://${process.env.VERCEL_URL}`
-  : "http://localhost:3000"
+import Header from "@/components/header"
+import Footer from "@/components/footer"
+import { defaultUrl } from "@/lib/constants"
 
 export const metadata: Metadata = {
   metadataBase: new URL(defaultUrl),
@@ -31,7 +30,9 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          {children}
+          <Header />
+          <main className="min-h-screen flex flex-col">{children}</main>
+          <Footer />
         </ThemeProvider>
       </body>
     </html>

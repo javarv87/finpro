@@ -62,15 +62,20 @@ const config: Config = {
         sm: "calc(var(--radius) - 4px)",
       },
       gridTemplateColumns: {
-        footer: "repeat(3, 1fr) 150px",
+        footer: "repeat(4, 1fr) 150px",
       },
       animation: {
-        rainbow: "rainbow var(--speed, 2s) infinite linear",
+        marquee: "marquee var(--duration) linear infinite",
+        "marquee-vertical": "marquee-vertical var(--duration) linear infinite",
       },
       keyframes: {
-        rainbow: {
-          "0%": { "background-position": "0%" },
-          "100%": { "background-position": "200%" },
+        marquee: {
+          from: { transform: "translateX(0)" },
+          to: { transform: "translateX(calc(-100% - var(--gap)))" },
+        },
+        "marquee-vertical": {
+          from: { transform: "translateY(0)" },
+          to: { transform: "translateY(calc(-100% - var(--gap)))" },
         },
       },
     },
