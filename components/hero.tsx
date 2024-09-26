@@ -2,6 +2,7 @@ import { ArrowRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { FinProCard, FinProCardNoLogo } from "@/components/ui/finpro-card"
 import { FlipWords } from "@/components/ui/flip-words"
+import Link from "next/link"
 
 export default function Hero() {
   return (
@@ -29,11 +30,13 @@ export default function Hero() {
             convenientes y cuentas de ahorro de alto rendimiento. ¡Empieza hoy
             mismo!
           </p>
-          <Button size="cta-lg" variant="primary">
-            <div className="size-[36rem] group-hover:rotate-90 duration-500 absolute -right-28 -z-10 bg-[conic-gradient(from_0.789rad,_var(--tw-gradient-stops))] from-orange-400 to-orange-500/90"></div>
-            ¡Únete!
-            <ArrowRight className="inline w-4 h-4 ml-2 group-hover:translate-x-1 duration-300" />
-          </Button>
+          <Link href="#contacto" passHref legacyBehavior>
+            <Button size="cta-lg" variant="primary">
+              <div className="size-[36rem] group-hover:rotate-90 duration-500 absolute -right-28 -z-10 bg-[conic-gradient(from_0.789rad,_var(--tw-gradient-stops))] from-orange-400 to-orange-500/90"></div>
+              ¡Únete!
+              <ArrowRight className="inline w-4 h-4 ml-2 group-hover:translate-x-1 duration-300" />
+            </Button>
+          </Link>
         </div>
         {/* Right */}
         <div className="h-96 relative w-1/3 hidden lg:flex ml-48">

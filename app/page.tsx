@@ -6,6 +6,7 @@ import Testimonials from "@/components/testimonials";
 import Cta from "@/components/cta";
 import Separator from "@/components/ui/separator";
 import Faq from "@/components/faq";
+import ContactForm from "@/components/contact";
 
 export default function Home() {
   return (
@@ -20,6 +21,7 @@ export default function Home() {
       <Cta />
       <Separator />
       <Faq />
+      <ContactForm />
     </>
   )
 }

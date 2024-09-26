@@ -35,7 +35,7 @@ export default function Header({ ...props }) {
     }
   }, [setMenuIsOpen])
 
-  const updateBackgroundStyles = () => {
+  useEffect(() => {
     if (hoveredItem && navRef.current) {
       const navItem = navRef.current.querySelector(
         `[data-name="${hoveredItem}"]`
@@ -48,10 +48,6 @@ export default function Header({ ...props }) {
         })
       }
     }
-  }
-
-  useEffect(() => {
-    updateBackgroundStyles()
   }, [hoveredItem])
 
   const handleScroll = (
@@ -119,10 +115,12 @@ export default function Header({ ...props }) {
                   </Link>
                 ))}
               </nav>
-              <Button size="cta-sm" variant="primary">
-                <div className="size-52 group-hover:rotate-90 duration-500 absolute -right-1 -z-10 bg-[conic-gradient(from_0.789rad,_var(--tw-gradient-stops))] from-orange-400 to-orange-500/90"></div>
-                ¡Únete!
-              </Button>
+              <Link href="#contacto" passHref legacyBehavior>
+                <Button size="cta-sm" variant="primary">
+                  <div className="size-52 group-hover:rotate-90 duration-500 absolute -right-1 -z-10 bg-[conic-gradient(from_0.789rad,_var(--tw-gradient-stops))] from-orange-400 to-orange-500/90"></div>
+                  ¡Únete!
+                </Button>
+              </Link>
             </div>
             <Button
               variant="ghost"
