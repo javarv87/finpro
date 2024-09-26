@@ -228,7 +228,7 @@ export default function Footer() {
               >
                 <path d="M8 0H7V7H0V8H7V15H8V8H15V7H8V0Z"></path>
               </svg>
-              <p className="text-center text-xs leading-loose text-muted-foreground md:text-left">
+              <p className="text-left text-xs leading-loose text-muted-foreground md:text-left">
                 © 2024 FinPro. Todos los derechos reservados.
               </p>
             </div>
