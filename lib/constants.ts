@@ -1,6 +1,10 @@
-export const defaultUrl = process.env.VERCEL_URL
-  ? `https://${process.env.VERCEL_URL}`
-  : "http://localhost:3000"
+export const defaultUrl =
+  process.env.VERCEL_ENV === "production"
+    ? `https://finpro-eight.vercel.app`
+    : process.env.VERCEL_URL
+    ? `https://${process.env.VERCEL_URL}`
+    : `http://localhost:3000`
+
 
 export const menuItems = [
   {
