@@ -17,9 +17,15 @@ export const metadata: Metadata = {
     siteName: "FinPro",
     images: [
       {
-        url: new URL(`${defaultUrl}/images/open-graph.png`),
-        width: 2622,
-        height: 1040,
+        url: new URL(`${defaultUrl}/images/og.png`),
+        width: 800,
+        height: 600,
+      },
+      {
+        url: new URL(`${defaultUrl}/images/og-lg.png`),
+        width: 1800,
+        height: 1600,
+        alt: 'FinPro',
       },
     ],
     locale: "es_MX",
