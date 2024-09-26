@@ -1,7 +1,13 @@
 import Image from "next/image"
-import Marquee from "./ui/marquee"
+import Marquee from "@/components/ui/marquee"
 
-const partnersList = [
+interface Partner {
+  id: number
+  alt: string
+  image: string
+}
+
+const partnersList: Partner[] = [
   {
     id: 1,
     alt: "Google",

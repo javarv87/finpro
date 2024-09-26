@@ -1,5 +1,5 @@
-import ThemeSwitcher from "@/components/theme-switcher"
-import FinProLogo from "@/components/finpro-logo"
+import ThemeSwitcher from "@/components/ui/theme-switcher"
+import FinProLogo from "@/components/ui/finpro-logo"
 import Link from "next/link"
 import { menuItems } from "@/lib/constants"
 
@@ -86,7 +86,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="grid grid-cols-2 lg:grid-cols-footer gap-8 md:gap-0 w-full">
+        <div className="grid grid-cols-2 lg:grid-cols-footer gap-8 md:gap-4 w-full">
           <div className="text-sm">
             <h2 className="font-bold my-2">Nosotros</h2>
             <ul className="text-muted-foreground">
@@ -181,12 +181,12 @@ export default function Footer() {
               </li>
             </ul>
           </div>
-          <div className="flex justify-start md:justify-end">
+          <div className="flex justify-start lg:justify-end">
             <ThemeSwitcher />
           </div>
         </div>
 
-        <FinProLogo className="mt-16 h-16 md:h-32 w-auto m-auto text-black/5 dark:text-white/5" />
+        <FinProLogo className="mt-16 h-16 md:h-32 w-full m-auto text-black/5 dark:text-white/5" />
 
         <div className="flex justify-between group/row relative isolate pt-[calc(theme(spacing.2)+1px)] last:pb-[calc(theme(spacing.2)+1px)]">
           <div

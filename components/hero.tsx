@@ -1,17 +1,17 @@
 import { ArrowRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { FinProCard, FinProCardNoLogo } from "@/components/finpro-card"
+import { FinProCard, FinProCardNoLogo } from "@/components/ui/finpro-card"
 import { FlipWords } from "@/components/ui/flip-words"
 
 export default function Hero() {
   return (
-    <section id="inicio" className="relative w-full flex flex-col">
+    <section id="inicio" className="relative w-full">
       <div className="absolute -z-1 inset-0 h-[600px] w-full bg-transparent opacity-10 bg-[linear-gradient(to_right,theme('colors.zinc.500')_1px,transparent_1px),linear-gradient(to_bottom,theme('colors.zinc.500')_1px,transparent_1px)] bg-[size:8rem_8rem] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_0%,#000_70%,transparent_110%)] dark:bg-[linear-gradient(to_right,theme('colors.zinc.100')_1px,transparent_1px),linear-gradient(to_bottom,theme('colors.zinc.100')_1px,transparent_1px)]"></div>
 
-      <div className="lg:container w-full mx-auto text-zinc-600 items-center justify-between flex md:flex-row flex-col-reverse gap-8 px-8 xl:px-48 pt-12 md:pt-28 pb-14 z-10">
+      <div className="max-w-7xl w-full mx-auto md:items-center md:justify-between flex md:flex-row md:gap-8 px-8 py-12 lg:py-28">
         {/* Left */}
         <div className="space-y-6 w-full md:w-2/3">
-          <div className="text-sm dark:text-zinc-400 font-geist mr-auto px-5 py-2 bg-gradient-to-tr from-zinc-300/5 via-zinc-400/5 to-transparent border-[2px] dark:border-white/5 rounded-3xl w-fit">          
+          <div className="text-sm dark:text-zinc-400 font-geist mr-auto px-5 py-2 bg-gradient-to-tr from-zinc-300/5 via-zinc-400/5 to-transparent border-[2px] dark:border-white/5 rounded-3xl w-fit">
             <FlipWords
               words={[
                 "+ 1M Usuarios",
@@ -36,7 +36,7 @@ export default function Hero() {
           </Button>
         </div>
         {/* Right */}
-        <div className="h-96 mt-14 md:mt-0 md:max-w-xl relative w-1/3 hidden lg:flex ml-48">
+        <div className="h-96 relative w-1/3 hidden lg:flex ml-48">
           <FinProCard className="max-w-fit drop-shadow-lg absolute right-36 top-12 rotate-45 dark:text-neutral-100 text-neutral-900" />
           <FinProCardNoLogo className="max-w-fit drop-shadow-lg absolute right-0 top-10 -rotate-45 -z-20 dark:text-neutral-100 text-slate-200" />
           <FinProCardNoLogo className="max-w-fit drop-shadow-lg absolute right-0 bottom-0 -z-10 dark:text-neutral-100 text-slate-200" />

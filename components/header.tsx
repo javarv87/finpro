@@ -1,12 +1,13 @@
 "use client"
 
 import Link from "next/link"
-import FinProLogo from "@/components/finpro-logo"
+import FinProLogo from "@/components/ui/finpro-logo"
 import { Button } from "@/components/ui/button"
 import { menuItems } from "@/lib/constants"
 import { Menu, XIcon } from "lucide-react"
 import { useEffect, useState } from "react"
 import { AnimatePresence, motion } from "framer-motion"
+import Separator from "@/components/ui/separator"
 
 export default function Header({ ...props }) {
   const [menuIsOpen, setMenuIsOpen] = useState(false)
@@ -28,9 +29,9 @@ export default function Header({ ...props }) {
   }, [setMenuIsOpen])
 
   return (
-    <>    
+    <>
       <header
-        className="sticky top-0 z-50 w-full bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60"
+        className="sticky top-0 z-[999] max-w-7xl mx-auto w-full bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60"
         {...props}
       >
         <div className="px-7 flex h-[4rem] items-center m-auto justify-between">
@@ -70,13 +71,9 @@ export default function Header({ ...props }) {
             </Button>
           </div>
         </div>
-        <div
-          className="h-px border-none bg-gradient-to-r from-neutral-400/0
-              via-neutral-400/30 to-neutral-400/0 dark:from-neutral-200/0
-              dark:via-neutral-200/30 dark:to-neutral-200/0"
-        ></div>
+        <Separator />
       </header>
-      <MobileMenu isOpen={menuIsOpen} onClose={() => setMenuIsOpen(false)}/>
+      <MobileMenu isOpen={menuIsOpen} onClose={() => setMenuIsOpen(false)} />
     </>
   )
 }
@@ -95,7 +92,7 @@ const MobileMenu = ({ isOpen, onClose }: MobileMenuProps) => {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -20 }}
           transition={{ duration: 0.2 }}
-          className="fixed left-0 top-0 mt-[4rem] z-50 h-[calc(100vh-4rem)] w-full overflow-auto bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60"
+          className="fixed left-0 top-0 mt-[4rem] z-[999] h-[calc(100vh-4rem)] w-full overflow-auto bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60"
         >
           <motion.nav
             initial={{ scale: 0.8 }}
@@ -106,15 +103,22 @@ const MobileMenu = ({ isOpen, onClose }: MobileMenuProps) => {
           >
             <motion.div className="grid grid-cols-1">
               {menuItems.map((item) => (
-                <Link
-                  href={item.href}
-                  className="group relative isolate px-6 mx-0 py-16"
-                  key={item.id}
-                  onClick={onClose}
-                >
-                  {item.label}
-                  <span className="absolute inset-y-0 -z-10 w-screen bg-foreground/10 opacity-0 transition group-odd:right-0 group-even:left-0 group-hover:opacity-100"></span>
-                </Link>
+                <>
+                  <Link
+                    href={item.href}
+                    className="group relative isolate px-6 mx-0 py-16"
+                    key={item.id}
+                    onClick={onClose}
+                  >
+                    {item.label}
+                    <span className="absolute inset-y-0 -z-10 w-screen bg-foreground/10 opacity-0 transition group-odd:right-0 group-even:left-0 group-hover:opacity-100"></span>
+                  </Link>
+                  <div
+                    className="h-px border-none bg-gradient-to-r from-neutral-400/0
+              via-neutral-400/30 to-neutral-400/0 dark:from-neutral-200/0
+              dark:via-neutral-200/30 dark:to-neutral-200/0"
+                  ></div>
+                </>
               ))}
             </motion.div>
           </motion.nav>
