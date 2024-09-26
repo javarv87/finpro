@@ -41,7 +41,7 @@ const features: Feature[] = [
 
 export default function Features() {
   return (
-    <section className="max-w-7xl w-full mx-auto pt-0 pb-12 px-8">
+    <section id="features" className="max-w-7xl w-full mx-auto pt-0 pb-12 px-8">
       <div className="heading-section max-w-3xl text-left">
         <h2 className="tracking-tight text-5xl leading-tight font-exo mb-2 font-medium text-transparent bg-clip-text bg-[linear-gradient(270deg,_#d0a786,_theme('colors.zinc.600'))] dark:bg-[linear-gradient(270deg,_theme('colors.orange.50'_/_60%)_45%,_theme('colors.gray.500'))]">
           Razones por que elegirnos

@@ -38,7 +38,7 @@ const partnersList: Partner[] = [
 export default function Partners() {
   return (
     <section
-      id="clients"
+      id="partners"
       className="mx-auto max-w-7xl px-6 text-center md:px-8 w-full"
     >
       <div className="py-7">

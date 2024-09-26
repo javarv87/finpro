@@ -5,12 +5,19 @@ import FinProLogo from "@/components/ui/finpro-logo"
 import { Button } from "@/components/ui/button"
 import { menuItems } from "@/lib/constants"
 import { Menu, XIcon } from "lucide-react"
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { AnimatePresence, motion } from "framer-motion"
 import Separator from "@/components/ui/separator"
 
 export default function Header({ ...props }) {
   const [menuIsOpen, setMenuIsOpen] = useState(false)
+  const [hoveredItem, setHoveredItem] = useState<string | null>(null)
+  const [backgroundStyles, setBackgroundStyles] = useState({
+    left: 0,
+    width: 0,
+  })
+  const [isHovering, setIsHovering] = useState(false)
+  const navRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     const html = document.querySelector("html")
@@ -28,6 +35,46 @@ export default function Header({ ...props }) {
     }
   }, [setMenuIsOpen])
 
+  const updateBackgroundStyles = () => {
+    if (hoveredItem && navRef.current) {
+      const navItem = navRef.current.querySelector(
+        `[data-name="${hoveredItem}"]`
+      )
+      if (navItem) {
+        const { offsetLeft, offsetWidth } = navItem as HTMLElement
+        setBackgroundStyles({
+          left: offsetLeft,
+          width: offsetWidth,
+        })
+      }
+    }
+  }
+
+  useEffect(() => {
+    updateBackgroundStyles()
+  }, [hoveredItem])
+
+  const handleScroll = (
+    event: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
+    href: string
+  ) => {
+    event.preventDefault()
+
+    const targetElement = document.querySelector(href)
+
+    if (targetElement) {
+      const headerOffset = document.querySelector("header")?.clientHeight || 0 // Get header height
+      const elementPosition =
+        targetElement.getBoundingClientRect().top + window.pageYOffset
+      const offsetPosition = elementPosition - headerOffset
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth",
+      })
+    }
+  }
+
   return (
     <>
       <header
@@ -39,13 +86,34 @@ export default function Header({ ...props }) {
             <FinProLogo className="h-7 text-orange-400" />
           </Link>
           <div className="flex items-center gap-4 sm:gap-6">
-            <div className="md:flex items-center gap-4 hidden">
-              <nav className="ml-auto flex gap-4 sm:gap-6">
+            <div
+              className="md:flex items-center gap-8 hidden"
+              onMouseEnter={() => setIsHovering(true)}
+              onMouseLeave={() => {
+                setIsHovering(false)
+                setHoveredItem(null)
+              }}
+            >
+              <nav className="ml-auto flex gap-4 sm:gap-6" ref={navRef}>
+                <motion.div
+                  className="absolute h-8 top-4 bg-zinc-100 dark:bg-zinc-200/20 rounded-md z-0"
+                  initial={false}
+                  animate={{
+                    left: backgroundStyles.left,
+                    width: backgroundStyles.width,
+                    opacity: isHovering ? 1 : 0,
+                  }}
+                  transition={{ type: "spring", stiffness: 250, damping: 30 }}
+                />
                 {menuItems.map((item) => (
                   <Link
                     href={item.href}
-                    className="text-sm font-medium hover:underline underline-offset-4"
+                    className="text-sm font-medium relative z-10 p-4"
                     key={item.id}
+                    data-name={item.href}
+                    onClick={(e) => handleScroll(e, item.href)}
+                    onMouseEnter={() => setHoveredItem(item.href)}
+                    onMouseLeave={() => setHoveredItem(null)}
                   >
                     {item.label}
                   </Link>

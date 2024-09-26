@@ -5,6 +5,7 @@ import Features from "@/components/features";
 import Testimonials from "@/components/testimonials";
 import Cta from "@/components/cta";
 import Separator from "@/components/ui/separator";
+import Faq from "@/components/faq";
 
 export default function Home() {
   return (
@@ -17,6 +18,8 @@ export default function Home() {
       <Separator />
       <Testimonials />
       <Cta />
+      <Separator />
+      <Faq />
     </>
   )
 }
