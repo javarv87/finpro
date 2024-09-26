@@ -10,6 +10,21 @@ export const metadata: Metadata = {
   metadataBase: new URL(defaultUrl),
   title: "FinPro | Transforma tus Finanzas",
   description: `Descubre productos financieros personalizados en FinPro. Préstamos personales, tarjetas de crédito y cuentas de ahorro con tasas competitivas. ¡Empieza hoy!`,
+  openGraph: {
+    title: "FinPro | Transforma tus Finanzas",
+    description: `Descubre productos financieros personalizados en FinPro. Préstamos personales, tarjetas de crédito y cuentas de ahorro con tasas competitivas. ¡Empieza hoy!`,
+    url: new URL(defaultUrl),
+    siteName: "FinPro",
+    images: [
+      {
+        url: new URL(`${defaultUrl}/images/open-graph.png`),
+        width: 2622,
+        height: 1040,
+      },
+    ],
+    locale: "es_MX",
+    type: "website",
+  },
 }
 
 export default function RootLayout({
