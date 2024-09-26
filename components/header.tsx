@@ -74,10 +74,10 @@ export default function Header({ ...props }) {
   return (
     <>
       <header
-        className="sticky top-0 z-[999] max-w-7xl mx-auto w-full bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60"
+        className="sticky top-0 z-[999] bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60"
         {...props}
       >
-        <div className="px-7 flex h-[4rem] items-center m-auto justify-between">
+        <div className="max-w-7xl mx-auto w-full px-7 flex h-[4rem] items-center m-auto justify-between">
           <Link href="/" className="flex items-center space-x-2">
             <FinProLogo className="h-7 text-orange-400" />
           </Link>
