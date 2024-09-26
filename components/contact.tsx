@@ -88,7 +88,7 @@ export default function ContactForm() {
   }
 
   return (
-    <section id="contacto" className="max-w-7xl w-full mx-auto px-8 py-12">
+    <section id="contacto" className="max-w-7xl w-full mx-auto px-8 py-12 pt-20">
       <div className="grid grid-cols-1 gap-x-8 gap-y-8 lg:grid-cols-2">
         <div className="heading-section text-left">
           <h2 className="tracking-tight text-5xl leading-tight font-exo mb-2 font-medium text-transparent bg-clip-text bg-[linear-gradient(270deg,_#d0a786,_theme('colors.zinc.600'))] dark:bg-[linear-gradient(270deg,_theme('colors.orange.50'_/_60%)_45%,_theme('colors.gray.500'))]">
