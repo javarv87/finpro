@@ -11,13 +11,11 @@ import Separator from "@/components/ui/separator"
 
 export default function Header({ ...props }) {
   const [menuIsOpen, setMenuIsOpen] = useState(false)
-  const [hoveredItem, setHoveredItem] = useState<string | null>(null)
-  const [backgroundStyles, setBackgroundStyles] = useState({
+  const [position, setPosition] = useState({
     left: 0,
     width: 0,
+    opacity: 0,
   })
-  const [isHovering, setIsHovering] = useState(false)
-  const navRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     const html = document.querySelector("html")
@@ -34,21 +32,6 @@ export default function Header({ ...props }) {
       window.removeEventListener("resize", closeHamburgerNavigation)
     }
   }, [setMenuIsOpen])
-
-  useEffect(() => {
-    if (hoveredItem && navRef.current) {
-      const navItem = navRef.current.querySelector(
-        `[data-name="${hoveredItem}"]`
-      )
-      if (navItem) {
-        const { offsetLeft, offsetWidth } = navItem as HTMLElement
-        setBackgroundStyles({
-          left: offsetLeft,
-          width: offsetWidth,
-        })
-      }
-    }
-  }, [hoveredItem])
 
   const handleScroll = (
     event: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
@@ -82,38 +65,33 @@ export default function Header({ ...props }) {
             <FinProLogo className="h-7 text-orange-400" />
           </Link>
           <div className="flex items-center gap-4 sm:gap-6">
-            <div
-              className="md:flex items-center gap-8 hidden"
-              onMouseEnter={() => setIsHovering(true)}
-              onMouseLeave={() => {
-                setIsHovering(false)
-                setHoveredItem(null)
-              }}
-            >
-              <nav className="ml-auto flex gap-4 sm:gap-6" ref={navRef}>
-                <motion.div
-                  className="absolute h-8 top-4 bg-zinc-100 dark:bg-zinc-200/20 rounded-md z-0"
-                  initial={false}
-                  animate={{
-                    left: backgroundStyles.left,
-                    width: backgroundStyles.width,
-                    opacity: isHovering ? 1 : 0,
-                  }}
-                  transition={{ type: "spring", stiffness: 250, damping: 30 }}
-                />
+            <div className="md:flex items-center gap-8 hidden">
+              <nav
+                className="relative mx-auto flex w-fit gap-4 sm:gap-6"
+                onMouseLeave={() => {
+                  setPosition((pv) => ({
+                    ...pv,
+                    opacity: 0,
+                  }))
+                }}
+              >
                 {menuItems.map((item) => (
-                  <Link
-                    href={item.href}
-                    className="text-sm font-medium relative z-10 p-4"
-                    key={item.id}
-                    data-name={item.href}
-                    onClick={(e) => handleScroll(e, item.href)}
-                    onMouseEnter={() => setHoveredItem(item.href)}
-                    onMouseLeave={() => setHoveredItem(null)}
-                  >
-                    {item.label}
-                  </Link>
+                  <ItemNav key={item.id} setPosition={setPosition}>
+                    <Link
+                      href={item.href}
+                      onClick={(e) => handleScroll(e, item.href)}
+                      className="px-3 py-1 text-sm font-medium"
+                    >
+                      {item.label}
+                    </Link>
+                  </ItemNav>
                 ))}
+                <motion.div
+                  animate={{
+                    ...position,
+                  }}
+                  className="absolute h-7 bg-zinc-100 dark:bg-zinc-200/20 rounded-md z-0"
+                />
               </nav>
               <Link href="#contacto" passHref legacyBehavior>
                 <Button size="cta-sm" variant="primary">
@@ -141,6 +119,41 @@ export default function Header({ ...props }) {
       </header>
       <MobileMenu isOpen={menuIsOpen} onClose={() => setMenuIsOpen(false)} />
     </>
+  )
+}
+
+interface ItemNavProps {
+  children: React.ReactNode
+  setPosition: React.Dispatch<
+    React.SetStateAction<{
+      left: number
+      width: number
+      opacity: number
+    }>
+  >
+}
+
+const ItemNav = ({ children, setPosition }: ItemNavProps) => {
+  const ref = useRef<HTMLDivElement>(null)
+
+  return (
+    <div
+      ref={ref}
+      onMouseEnter={() => {
+        if (!ref?.current) return
+
+        const { width } = ref.current.getBoundingClientRect()
+
+        setPosition({
+          left: ref.current.offsetLeft,
+          width,
+          opacity: 1,
+        })
+      }}
+      className="relative z-10 cursor-pointer"
+    >
+      {children}
+    </div>
   )
 }
 
