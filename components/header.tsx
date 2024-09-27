@@ -80,7 +80,7 @@ export default function Header({ ...props }) {
                     <Link
                       href={item.href}
                       onClick={(e) => handleScroll(e, item.href)}
-                      className="px-3 py-1 text-sm font-medium"
+                      className="px-3 py-2 text-sm font-medium block"
                     >
                       {item.label}
                     </Link>
@@ -90,7 +90,7 @@ export default function Header({ ...props }) {
                   animate={{
                     ...position,
                   }}
-                  className="absolute h-7 bg-zinc-100 dark:bg-zinc-200/20 rounded-md z-0"
+                  className="absolute h-9 bg-zinc-100 dark:bg-zinc-200/20 rounded-md z-0"
                 />
               </nav>
               <Link href="#contacto" passHref legacyBehavior>
@@ -182,11 +182,10 @@ const MobileMenu = ({ isOpen, onClose }: MobileMenuProps) => {
           >
             <motion.div className="grid grid-cols-1">
               {menuItems.map((item) => (
-                <>
+                <div className="group relative isolate" key={item.id}>
                   <Link
                     href={item.href}
-                    className="group relative isolate px-6 mx-0 py-16"
-                    key={item.id}
+                    className="block px-6 mx-0 py-16"
                     onClick={onClose}
                   >
                     {item.label}
@@ -197,7 +196,7 @@ const MobileMenu = ({ isOpen, onClose }: MobileMenuProps) => {
               via-neutral-400/30 to-neutral-400/0 dark:from-neutral-200/0
               dark:via-neutral-200/30 dark:to-neutral-200/0"
                   ></div>
-                </>
+                </div>
               ))}
             </motion.div>
           </motion.nav>
